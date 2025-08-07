@@ -26,10 +26,10 @@ def extrair_dados_pagina(soup):
             isins = colunas[4].text.strip().split()
             valor = limpar_valor(colunas[5].text.strip())
 
-            # Junta os ISINs em uma única string separada por vírgula
+          
             codigo_isin = ', '.join(isins)
 
-            # Adiciona uma linha única por emissão
+           
             dados.append([ano, empresa, numero_emissao, serie, codigo_isin, valor])
     return dados
 
@@ -56,9 +56,9 @@ def main():
 
         todas_emissoes.extend(dados)
         pagina += 1
-        time.sleep(1)  # Respeitar o servidor
+        time.sleep(1)
 
-    # Ajuste dos nomes das colunas finais
+   
     df = pd.DataFrame(todas_emissoes, columns=[
         "Ano", "Empresa (Operação)", "NumeroEmissao", "Serie", "Cod ISIN", "Valor"
     ])
